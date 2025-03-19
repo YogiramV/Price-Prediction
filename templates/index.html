@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Price Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Property Price Prediction</h1>
+
+        <form action="/predict" method="POST">
+            <!-- Suburb (selectable from the list) -->
+            <div class="mb-3">
+                <label for="suburb" class="form-label">Suburb</label>
+                <select id="suburb" name="suburb" class="form-select" required>
+                    <option value="" disabled selected>Select Suburb</option>
+                    {% for suburb in suburb_values %}
+                        <option value="{{ suburb }}">{{ suburb }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Type -->
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <select id="type" name="type" class="form-select" required>
+                    <option value="" disabled selected>Select Property Type</option>
+                    {% for key, value in type_map.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Method -->
+            <div class="mb-3">
+                <label for="method" class="form-label">Method</label>
+                <select id="method" name="method" class="form-select" required>
+                    <option value="" disabled selected>Select Auction Method</option>
+                    {% for key, value in method_map.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Region Name (selectable from the list) -->
+            <div class="mb-3">
+                <label for="regionname" class="form-label">Region Name</label>
+                <select id="regionname" name="regionname" class="form-select" required>
+                    <option value="" disabled selected>Select Region Name</option>
+                    {% for region in regionname_values %}
+                        <option value="{{ region }}">{{ region }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Date -->
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+
+            <!-- Rooms -->
+            <div class="mb-3">
+                <label for="rooms" class="form-label">Rooms</label>
+                <input type="number" id="rooms" name="rooms" class="form-control" required>
+            </div>
+
+            <!-- Distance -->
+            <div class="mb-3">
+                <label for="distance" class="form-label">Distance (km)</label>
+                <input type="number" step="any" id="distance" name="distance" class="form-control" required>
+            </div>
+
+            <!-- Postcode -->
+            <div class="mb-3">
+                <label for="postcode" class="form-label">Postcode</label>
+                <input type="number" id="postcode" name="postcode" class="form-control" required>
+            </div>
+
+            <!-- Bedroom2 -->
+            <div class="mb-3">
+                <label for="bedroom2" class="form-label">Bedroom2</label>
+                <input type="number" id="bedroom2" name="bedroom2" class="form-control" required>
+            </div>
+
+            <!-- Bathroom -->
+            <div class="mb-3">
+                <label for="bathroom" class="form-label">Bathroom</label>
+                <input type="number" id="bathroom" name="bathroom" class="form-control" required>
+            </div>
+
+            <!-- Car -->
+            <div class="mb-3">
+                <label for="car" class="form-label">Car</label>
+                <input type="number" id="car" name="car" class="form-control" required>
+            </div>
+
+            <!-- Landsize -->
+            <div class="mb-3">
+                <label for="landsize" class="form-label">Landsize (m²)</label>
+                <input type="number" step="any" id="landsize" name="landsize" class="form-control" required>
+            </div>
+
+            <!-- Building Area -->
+            <div class="mb-3">
+                <label for="buildingarea" class="form-label">Building Area (m²)</label>
+                <input type="number" step="any" id="buildingarea" name="buildingarea" class="form-control" required>
+            </div>
+
+            <!-- Year Built -->
+            <div class="mb-3">
+                <label for="yearbuilt" class="form-label">Year Built</label>
+                <input type="number" id="yearbuilt" name="yearbuilt" class="form-control" required>
+            </div>
+
+            <!-- Latitude -->
+            <div class="mb-3">
+                <label for="lattitude" class="form-label">Latitude</label>
+                <input type="number" step="any" id="lattitude" name="lattitude" class="form-control" required>
+            </div>
+
+            <!-- Longitude -->
+            <div class="mb-3">
+                <label for="longtitude" class="form-label">Longitude</label>
+                <input type="number" step="any" id="longtitude" name="longtitude" class="form-control" required>
+            </div>
+
+            <!-- Property Count -->
+            <div class="mb-3">
+                <label for="propertycount" class="form-label">Property Count</label>
+                <input type="number" id="propertycount" name="propertycount" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Predict Price</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
